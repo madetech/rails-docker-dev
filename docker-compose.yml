@@ -3,14 +3,15 @@ web:
   volumes:
     - .:/app
   ports:
-    - "5000:5000"
+    - "3000:3000"
   links:
     - db
-  env_file:
-    - '.env.web'
+  environment:
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
 db:
   image: mysql
   ports:
     - "13306:3306"
-  env_file:
-    - '.env.db'
+  environment:
+    MYSQL_ROOT_PASSWORD: root
